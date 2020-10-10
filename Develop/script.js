@@ -15,11 +15,29 @@ function writePassword() {
 
 function generatePassword() {
 
-  var passwordLength = window.prompt("How many character would you like in your password? ", "8");
+  var passwordLength = prompt("How many character would you like in your password? ", "8");
+  passwordLength = Number.parseInt(passwordLength, 8);
+
+  //if size is NaN, then return an error 
+  if (Number.isNaN(passwordLength)) {
+    alert("Invalid format! Please enter a valid number between 8 and 128.");
+  }
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("Invalid length! Please use a number between 8 and 128.");
+    return '';
+  }
   console.log('passwordLength', passwordLength, typeof passwordLength);
 
   // confirm: lowercase, uppercase, numeric, and or special characters 
-  var lowercase = window.prompt("Do you want your password to contain lowercase letters?");
+  var lowercase = prompt("Do you want your password to contain lowercase letters?");
+  if (lowercase === "yes" || lowercase === "Yes") {
+    lowercase = true;
+  } else if (lowercase === "no" || lowercase === "No") {
+    lowercase = false;
+  } else {
+    alert("Invalid input! Please type yes or no.");
+    return '';
+  }
   console.log('lowercase', lowercase, typeof lowercase);
 
   var uppercase = window.prompt("How about uppercase letters?");
@@ -34,9 +52,6 @@ function generatePassword() {
 
   // generate a password 
 
-
-
-  return 5;
 }
 
 // Add event listener to generate button
