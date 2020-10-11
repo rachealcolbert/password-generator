@@ -43,7 +43,6 @@ function generatePassword() {
   var specialCharacters = confirm("And would you like your password to contain special characters? Press OK to add special characters and CANCEL to exclude them.");
   console.log('specialCharacter', specialCharacters, typeof specialCharacters);
 
-
   var randomPassword = [];
 
   if (lowercase = true) {
@@ -59,7 +58,14 @@ function generatePassword() {
     randomPassword = randomPassword + characters.concat(specialCharacters);
   }
 
-  return randomPassword
+  var finalPassword = "";
+  var i;
+  for (i = 0; i < passwordLength; i++) {
+    finalPassword = finalPassword + randomPassword(Math.floor(Math.random() * randomPassword))
+    console.log(finalPassword)
+  }
+
+  return finalPassword;
 }
 
 // Add event listener to generate button
