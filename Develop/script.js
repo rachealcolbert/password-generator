@@ -17,6 +17,7 @@ function writePassword() {
 }
 
 function generatePassword() {
+  var randomPassword = [];
 
   var passwordLength = prompt("How many character would you like in your password? ", "8");
   passwordLength = Number.parseInt(passwordLength, 10);
@@ -42,19 +43,20 @@ function generatePassword() {
   var specialCharacters = confirm("And would you like your password to contain special characters? Press OK to add special characters and CANCEL to exclude them.");
   console.log('specialCharacter', specialCharacters, typeof specialCharacters);
 
-  var randomPassword = [];
 
   if (lowercase = true) {
-    randomPassword = randomPassword + lowercaseDigits.concat(lowercase);
+    randomPassword = lowercaseDigits.concat(lowercase);
+  } else {
+    randomPassword = uppercaseDigits.concat(lowercase);
   }
   if (uppercase = true) {
-    randomPassword = randomPassword + uppercaseDigits.concat(uppercase);
+    randomPassword = uppercaseDigits.concat(uppercase);
   }
   if (numeric = true) {
-    randomPassword = randomPassword + nonZeroDigits.concat(numeric);
+    randomPassword = nonZeroDigits.concat(numeric);
   }
   if (specialCharacters = true) {
-    randomPassword = randomPassword + characters.concat(specialCharacters);
+    randomPassword = characters.concat(specialCharacters);
   }
 
   var finalPassword = "";
