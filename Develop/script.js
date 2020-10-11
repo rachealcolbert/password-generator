@@ -3,7 +3,7 @@ var allDigits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var nonZeroDigits = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var lowercaseDigits = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseDigits = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var characters = ['@', '#', '$', '%', '<', '!', '<', '?'];
+var characters = ['@', '#', '$', '%', '<', '!', '<', '?', '^', '&', '=', '+', '~', '/', '"', '(', ')', '{', '}'];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -44,26 +44,28 @@ function generatePassword() {
   console.log('specialCharacter', specialCharacters, typeof specialCharacters);
 
 
-  if (lowercase = true) {
-    randomPassword = lowercaseDigits.concat(lowercase);
-  } else {
-    randomPassword = uppercaseDigits.concat(lowercase);
+  if (lowercase === true) {
+    randomPassword = randomPassword.concat(lowercaseDigits);
+
   }
-  if (uppercase = true) {
-    randomPassword = uppercaseDigits.concat(uppercase);
+  if (uppercase === true) {
+
+    randomPassword = randomPassword.concat(uppercaseDigits);
   }
-  if (numeric = true) {
-    randomPassword = nonZeroDigits.concat(numeric);
+  if (numeric === true) {
+    randomPassword = randomPassword.concat(nonZeroDigits);
+    // console.log('I got here ======', randomPassword);
   }
-  if (specialCharacters = true) {
-    randomPassword = characters.concat(specialCharacters);
+  if (specialCharacters === true) {
+    randomPassword = randomPassword.concat(characters);
   }
 
   var finalPassword = "";
   var i;
   for (i = 0; i < passwordLength; i++) {
-    finalPassword = finalPassword + randomPassword[Math.floor(Math.random() * passwordLength)]
-    console.log(finalPassword)
+    // console.log(randomPassword)
+    finalPassword = finalPassword + randomPassword[Math.floor(Math.random() * randomPassword.length)]
+    // console.log(finalPassword)
   }
 
   return finalPassword;
